@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
+{% block content %}
+<h1>{{ post.title|censor }}</h1>
+<hr />
+<br>
+<i>{{ post.text|censor|linebreaks }}</i>
+<br>
+{{ post.post_type }}
+<br>
+<a href="news/{{ post.id }}/update"><input type="button" value="Редактировать"></a>
+<br>
+<br>
+<h5>{{ post.date_in|date:'M d Y' }}</h5>
+{% endblock content %}
