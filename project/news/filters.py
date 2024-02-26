@@ -4,11 +4,10 @@ from .models import Post, Author, Category
 
 
 class PostFilter(FilterSet):
-    author = ModelChoiceFilter(
+    author = ModelMultipleChoiceFilter(
         field_name='author',
         queryset=Author.objects.all(),
         label='Автор',
-        empty_label='Все',
     )
     title = CharFilter(
         field_name='title',
@@ -24,6 +23,7 @@ class PostFilter(FilterSet):
         field_name='category',
         queryset=Category.objects.all(),
         label='Категории',
+        conjoined=True,
     )
 
     class Meta:
